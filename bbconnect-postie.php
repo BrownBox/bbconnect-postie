@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Connexions Postie
- * Plugin URI: n/a
+ * Plugin URI: http://connexionscrm.com/
  * Description: Add notes and history to Connexions by sending emails
- * Version: 0.1
+ * Version: 0.1.1
  * Author: Brown Box
  * Author URI: http://brownbox.net.au
  * License: Proprietary Brown Box
@@ -121,6 +121,12 @@ function bbconnect_postie_settings() {
                     ),
             ),
     );
+}
+
+add_filter('bbconnect_activity_types', 'bbconnect_postie_activity_types');
+function bbconnect_postie_activity_types($types) {
+    $types['postie'] = 'Postie';
+    return $types;
 }
 
 add_filter('bbconnect_activity_icon', 'bbconnect_postie_activity_icon', 10, 2);
